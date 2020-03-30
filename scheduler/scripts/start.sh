@@ -5,4 +5,9 @@ then
   (crontab -l; echo "${BACKLIGHT_OFF:-0 23 * * *} /usr/src/backlight_off.sh") | crontab -
 fi
 
-crond -f
+if [[ $BALENA_DEVICE_TYPE == *"raspberry"* ]];
+  then
+  crond -f
+  else
+  cron -f
+fi
